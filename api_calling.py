@@ -23,8 +23,8 @@ def error_finder_generator(images):
     )
     return response.text
 
-def solution_generator(image,selected_options):
-    prompt = f"Generate text based on the {selected_options}. Make sure to add markdown to diffrentate in text. and generate which option is selected if solution_with_code selected then generate code only otherwise generate only hints for users and when user choose hints don't show the correct code give only hints of the solution"
+def solution_generator(image,option):
+    prompt = f"Generate text based on the {option}. Make sure to add markdown to diffrentate in text. and generate which option is selected if solution_with_code selected then generate code only otherwise generate only hints for users and when user choose hints don't show the correct code give only hints of the solution"
     
     response = client.models.generate_content(
         model = "gemini-3-flash-preview",
