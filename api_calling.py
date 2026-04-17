@@ -25,14 +25,14 @@ def error_finder_generator(images):
 
 def solution_generator(image,option):
     prompt = f"""Generate text based on the {option}. Make sure to add markdown to diffrentate in text. 
-     1. If the user selects "Hint":
+     1. If the user selects option== "Hint":
     - Do NOT provide the corrected code.
     - Only give clear hints or guidance about what is wrong.
     - Explain the type of error (e.g., TypeError, SyntaxError, etc.).
     - Suggest what concept or part of the code needs fixing.
     - Keep the explanation simple and helpful.
 
-    2. If the user selects "Solution with Code":
+    2. If the user selects option == "Solution with Code":
     - Provide the fully corrected version of the code.
     - Ensure the code runs without errors.
     - Optionally include a short explanation of what was fixed.
