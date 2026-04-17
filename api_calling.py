@@ -24,7 +24,24 @@ def error_finder_generator(images):
     return response.text
 
 def solution_generator(image,option):
-    prompt = f"Generate text based on the {option}. Make sure to add markdown to diffrentate in text. and generate which option is selected if solution_with_code selected then generate code only otherwise generate only hints for users and when user choose hints don't show the correct code give only hints of the solution"
+    prompt = f"""Generate text based on the {option}. Make sure to add markdown to diffrentate in text. 
+     1. If the user selects "Hint":
+    - Do NOT provide the corrected code.
+    - Only give clear hints or guidance about what is wrong.
+    - Explain the type of error (e.g., TypeError, SyntaxError, etc.).
+    - Suggest what concept or part of the code needs fixing.
+    - Keep the explanation simple and helpful.
+
+    2. If the user selects "Solution with Code":
+    - Provide the fully corrected version of the code.
+    - Ensure the code runs without errors.
+    - Optionally include a short explanation of what was fixed.
+
+    Rules:
+ - Never show the corrected code when the user selects "Hint".
+ - Always ensure the explanation matches the user's selected option.
+ - Be concise, clear, and beginner-friendly.
+    """
     
     response = client.models.generate_content(
         model = "gemini-3-flash-preview",
